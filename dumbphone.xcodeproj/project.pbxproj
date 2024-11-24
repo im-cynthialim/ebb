@@ -1,0 +1,683 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		455FB8112CF21F3E000CAE0E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0612CF023870004EEB9 /* WidgetKit.framework */; };
+		455FB8122CF21F3E000CAE0E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0632CF023880004EEB9 /* SwiftUI.framework */; };
+		455FB81D2CF21F41000CAE0E /* blankwidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 455FB8102CF21F3E000CAE0E /* blankwidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		45DAD08D2CF0248C0004EEB9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0612CF023870004EEB9 /* WidgetKit.framework */; };
+		45DAD08E2CF0248C0004EEB9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0632CF023880004EEB9 /* SwiftUI.framework */; };
+		45DAD09B2CF0248E0004EEB9 /* dumbphonewidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 45DAD08C2CF0248C0004EEB9 /* dumbphonewidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		455FB81B2CF21F41000CAE0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45DAD0422CF023690004EEB9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 455FB80F2CF21F3E000CAE0E;
+			remoteInfo = blankwidgetExtension;
+		};
+		45DAD0992CF0248E0004EEB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45DAD0422CF023690004EEB9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45DAD08B2CF0248C0004EEB9;
+			remoteInfo = dumbphonewidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		45DAD0702CF0238C0004EEB9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				45DAD09B2CF0248E0004EEB9 /* dumbphonewidgetExtension.appex in Embed Foundation Extensions */,
+				455FB81D2CF21F41000CAE0E /* blankwidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		455FB8102CF21F3E000CAE0E /* blankwidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = blankwidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		45DAD04A2CF023690004EEB9 /* dumbphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dumbphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45DAD0612CF023870004EEB9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		45DAD0632CF023880004EEB9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		45DAD08C2CF0248C0004EEB9 /* dumbphonewidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = dumbphonewidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		455FB81E2CF21F41000CAE0E /* Exceptions for "blankwidget" folder in "blankwidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 455FB80F2CF21F3E000CAE0E /* blankwidgetExtension */;
+		};
+		455FB8262CF25CFF000CAE0E /* Exceptions for "dumbphone" folder in "dumbphone" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 45DAD0492CF023690004EEB9 /* dumbphone */;
+		};
+		45DAD09C2CF0248E0004EEB9 /* Exceptions for "dumbphonewidget" folder in "dumbphonewidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 45DAD08B2CF0248C0004EEB9 /* dumbphonewidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		455FB8132CF21F3E000CAE0E /* blankwidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				455FB81E2CF21F41000CAE0E /* Exceptions for "blankwidget" folder in "blankwidgetExtension" target */,
+			);
+			path = blankwidget;
+			sourceTree = "<group>";
+		};
+		45DAD04C2CF023690004EEB9 /* dumbphone */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				455FB8262CF25CFF000CAE0E /* Exceptions for "dumbphone" folder in "dumbphone" target */,
+			);
+			path = dumbphone;
+			sourceTree = "<group>";
+		};
+		45DAD08F2CF0248C0004EEB9 /* dumbphonewidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				45DAD09C2CF0248E0004EEB9 /* Exceptions for "dumbphonewidget" folder in "dumbphonewidgetExtension" target */,
+			);
+			path = dumbphonewidget;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		455FB80D2CF21F3E000CAE0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				455FB8122CF21F3E000CAE0E /* SwiftUI.framework in Frameworks */,
+				455FB8112CF21F3E000CAE0E /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45DAD0472CF023690004EEB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45DAD0892CF0248C0004EEB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45DAD08E2CF0248C0004EEB9 /* SwiftUI.framework in Frameworks */,
+				45DAD08D2CF0248C0004EEB9 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		45DAD0412CF023690004EEB9 = {
+			isa = PBXGroup;
+			children = (
+				45DAD04C2CF023690004EEB9 /* dumbphone */,
+				45DAD08F2CF0248C0004EEB9 /* dumbphonewidget */,
+				455FB8132CF21F3E000CAE0E /* blankwidget */,
+				45DAD0602CF023870004EEB9 /* Frameworks */,
+				45DAD04B2CF023690004EEB9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		45DAD04B2CF023690004EEB9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45DAD04A2CF023690004EEB9 /* dumbphone.app */,
+				45DAD08C2CF0248C0004EEB9 /* dumbphonewidgetExtension.appex */,
+				455FB8102CF21F3E000CAE0E /* blankwidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		45DAD0602CF023870004EEB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45DAD0612CF023870004EEB9 /* WidgetKit.framework */,
+				45DAD0632CF023880004EEB9 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		455FB80F2CF21F3E000CAE0E /* blankwidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 455FB81F2CF21F41000CAE0E /* Build configuration list for PBXNativeTarget "blankwidgetExtension" */;
+			buildPhases = (
+				455FB80C2CF21F3E000CAE0E /* Sources */,
+				455FB80D2CF21F3E000CAE0E /* Frameworks */,
+				455FB80E2CF21F3E000CAE0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				455FB8132CF21F3E000CAE0E /* blankwidget */,
+			);
+			name = blankwidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = blankwidgetExtension;
+			productReference = 455FB8102CF21F3E000CAE0E /* blankwidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		45DAD0492CF023690004EEB9 /* dumbphone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45DAD0582CF0236C0004EEB9 /* Build configuration list for PBXNativeTarget "dumbphone" */;
+			buildPhases = (
+				45DAD0462CF023690004EEB9 /* Sources */,
+				45DAD0472CF023690004EEB9 /* Frameworks */,
+				45DAD0482CF023690004EEB9 /* Resources */,
+				45DAD0702CF0238C0004EEB9 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45DAD09A2CF0248E0004EEB9 /* PBXTargetDependency */,
+				455FB81C2CF21F41000CAE0E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				45DAD04C2CF023690004EEB9 /* dumbphone */,
+			);
+			name = dumbphone;
+			packageProductDependencies = (
+			);
+			productName = dumbphone;
+			productReference = 45DAD04A2CF023690004EEB9 /* dumbphone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		45DAD08B2CF0248C0004EEB9 /* dumbphonewidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45DAD09D2CF0248E0004EEB9 /* Build configuration list for PBXNativeTarget "dumbphonewidgetExtension" */;
+			buildPhases = (
+				45DAD0882CF0248C0004EEB9 /* Sources */,
+				45DAD0892CF0248C0004EEB9 /* Frameworks */,
+				45DAD08A2CF0248C0004EEB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				45DAD08F2CF0248C0004EEB9 /* dumbphonewidget */,
+			);
+			name = dumbphonewidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = dumbphonewidgetExtension;
+			productReference = 45DAD08C2CF0248C0004EEB9 /* dumbphonewidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		45DAD0422CF023690004EEB9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					455FB80F2CF21F3E000CAE0E = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					45DAD0492CF023690004EEB9 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					45DAD08B2CF0248C0004EEB9 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+				};
+			};
+			buildConfigurationList = 45DAD0452CF023690004EEB9 /* Build configuration list for PBXProject "dumbphone" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 45DAD0412CF023690004EEB9;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 45DAD04B2CF023690004EEB9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45DAD0492CF023690004EEB9 /* dumbphone */,
+				45DAD08B2CF0248C0004EEB9 /* dumbphonewidgetExtension */,
+				455FB80F2CF21F3E000CAE0E /* blankwidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		455FB80E2CF21F3E000CAE0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45DAD0482CF023690004EEB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45DAD08A2CF0248C0004EEB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		455FB80C2CF21F3E000CAE0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45DAD0462CF023690004EEB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45DAD0882CF0248C0004EEB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		455FB81C2CF21F41000CAE0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 455FB80F2CF21F3E000CAE0E /* blankwidgetExtension */;
+			targetProxy = 455FB81B2CF21F41000CAE0E /* PBXContainerItemProxy */;
+		};
+		45DAD09A2CF0248E0004EEB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45DAD08B2CF0248C0004EEB9 /* dumbphonewidgetExtension */;
+			targetProxy = 45DAD0992CF0248E0004EEB9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		455FB8202CF21F41000CAE0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UMZNXCQRQT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = blankwidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = blankwidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app.blankwidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		455FB8212CF21F41000CAE0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UMZNXCQRQT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = blankwidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = blankwidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app.blankwidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		45DAD0562CF0236C0004EEB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		45DAD0572CF0236C0004EEB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		45DAD0592CF0236C0004EEB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"dumbphone/Preview Content\"";
+				DEVELOPMENT_TEAM = UMZNXCQRQT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dumbphone/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		45DAD05A2CF0236C0004EEB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"dumbphone/Preview Content\"";
+				DEVELOPMENT_TEAM = UMZNXCQRQT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dumbphone/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		45DAD09E2CF0248E0004EEB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UMZNXCQRQT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dumbphonewidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = dumbphonewidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app.dumbphonewidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		45DAD09F2CF0248E0004EEB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UMZNXCQRQT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dumbphonewidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = dumbphonewidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app.dumbphonewidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		455FB81F2CF21F41000CAE0E /* Build configuration list for PBXNativeTarget "blankwidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				455FB8202CF21F41000CAE0E /* Debug */,
+				455FB8212CF21F41000CAE0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45DAD0452CF023690004EEB9 /* Build configuration list for PBXProject "dumbphone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45DAD0562CF0236C0004EEB9 /* Debug */,
+				45DAD0572CF0236C0004EEB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45DAD0582CF0236C0004EEB9 /* Build configuration list for PBXNativeTarget "dumbphone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45DAD0592CF0236C0004EEB9 /* Debug */,
+				45DAD05A2CF0236C0004EEB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45DAD09D2CF0248E0004EEB9 /* Build configuration list for PBXNativeTarget "dumbphonewidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45DAD09E2CF0248E0004EEB9 /* Debug */,
+				45DAD09F2CF0248E0004EEB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 45DAD0422CF023690004EEB9 /* Project object */;
+}

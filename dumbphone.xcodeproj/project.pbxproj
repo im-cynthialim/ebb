@@ -10,6 +10,7 @@
 		455FB8112CF21F3E000CAE0E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0612CF023870004EEB9 /* WidgetKit.framework */; };
 		455FB8122CF21F3E000CAE0E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0632CF023880004EEB9 /* SwiftUI.framework */; };
 		455FB81D2CF21F41000CAE0E /* blankwidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 455FB8102CF21F3E000CAE0E /* blankwidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		455FB8282CF3893B000CAE0E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 455FB8272CF38936000CAE0E /* README.md */; };
 		45DAD08D2CF0248C0004EEB9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0612CF023870004EEB9 /* WidgetKit.framework */; };
 		45DAD08E2CF0248C0004EEB9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0632CF023880004EEB9 /* SwiftUI.framework */; };
 		45DAD09B2CF0248E0004EEB9 /* dumbphonewidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 45DAD08C2CF0248C0004EEB9 /* dumbphonewidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		455FB8102CF21F3E000CAE0E /* blankwidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = blankwidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		455FB8272CF38936000CAE0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45DAD04A2CF023690004EEB9 /* dumbphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dumbphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45DAD0612CF023870004EEB9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		45DAD0632CF023880004EEB9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -138,6 +140,7 @@
 		45DAD0412CF023690004EEB9 = {
 			isa = PBXGroup;
 			children = (
+				455FB8272CF38936000CAE0E /* README.md */,
 				45DAD04C2CF023690004EEB9 /* dumbphone */,
 				45DAD08F2CF0248C0004EEB9 /* dumbphonewidget */,
 				455FB8132CF21F3E000CAE0E /* blankwidget */,
@@ -284,6 +287,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				455FB8282CF3893B000CAE0E /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

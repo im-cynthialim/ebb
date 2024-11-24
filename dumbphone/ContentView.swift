@@ -13,10 +13,6 @@ struct ContentView: View {
           Link(destination: URL(string: "spotify://")!) {
             Text("Open Test Spotify")
           }
-          .onTapGesture {
-            print("open spotif")
-          }
-          
         }
         .padding()
     }

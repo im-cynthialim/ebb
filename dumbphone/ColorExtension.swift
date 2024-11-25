@@ -26,8 +26,10 @@ extension Color {
             opacity: alpha
         )
     }
+  
   //  using this color to hide bottom grey bar
   static let darkMode = Color(hex: "#252424", alpha: 1.0)
+  static let lightMode = Color(hex: "F6F6F6", alpha: 1.0)
 }
 
 

@@ -72,6 +72,20 @@
 			);
 			target = 45DAD0492CF023690004EEB9 /* dumbphone */;
 		};
+		456879EC2CF3FF1C00794E64 /* Exceptions for "dumbphone" folder in "dumbphonewidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ColorExtension.swift,
+			);
+			target = 45DAD08B2CF0248C0004EEB9 /* dumbphonewidgetExtension */;
+		};
+		456879ED2CF3FF1C00794E64 /* Exceptions for "dumbphone" folder in "blankwidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ColorExtension.swift,
+			);
+			target = 455FB80F2CF21F3E000CAE0E /* blankwidgetExtension */;
+		};
 		45DAD09C2CF0248E0004EEB9 /* Exceptions for "dumbphonewidget" folder in "dumbphonewidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -94,6 +108,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				455FB8262CF25CFF000CAE0E /* Exceptions for "dumbphone" folder in "dumbphone" target */,
+				456879EC2CF3FF1C00794E64 /* Exceptions for "dumbphone" folder in "dumbphonewidgetExtension" target */,
+				456879ED2CF3FF1C00794E64 /* Exceptions for "dumbphone" folder in "blankwidgetExtension" target */,
 			);
 			path = dumbphone;
 			sourceTree = "<group>";

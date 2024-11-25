@@ -131,8 +131,7 @@ struct dumbphoneApp: App {
   ]
   
   
-  
-  
+
   var body: some Scene {
     
     WindowGroup {
@@ -202,4 +201,11 @@ struct BlankView: View {
     var body: some View {
       Color.clear
     }
+}
+
+#Preview {
+    DecideView(targetURLScheme: .constant(nil), availableApps: [
+        AppInfo(name: "Safari", urlScheme: "safari://"),
+        AppInfo(name: "Mail", urlScheme: "mailto://")
+    ])
 }

@@ -28,7 +28,7 @@ struct blankwidgetEntryView: View {
 
     var body: some View {
         Color.clear // Blank widget background
-        .containerBackground(colorScheme == .dark ? Color.black : Color.white, for: .widget)
+        .containerBackground(colorScheme == .dark ? Color.darkMode : Color.white, for: .widget)
       
     }
   

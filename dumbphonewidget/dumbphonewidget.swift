@@ -55,7 +55,8 @@ struct dumbphonewidgetEntryView: View {
             
           }
         }
-        .containerBackground(colorScheme == .dark ? .black : .white, for: .widget)
+
+        .containerBackground(colorScheme == .dark ? Color.darkMode : .white, for: .widget)
     }
   
 }

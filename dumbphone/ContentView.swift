@@ -34,5 +34,6 @@ struct ContentView: View {
 
 #Preview {
   ContentView(availableApps: [    AppInfo(name: "Apple News", urlScheme: "applenews://"),
-                                  AppInfo(name: "App Store", urlScheme: "itms-apps://itunes.apple.com"),])
+                                  AppInfo(name: "App Store", urlScheme: "itms-apps://itunes.apple.com")
+                             ])
 }

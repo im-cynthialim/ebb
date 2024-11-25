@@ -19,7 +19,7 @@ struct Provider: TimelineProvider {
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
-      let selectedApps = [AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://")]
+      let selectedApps = [AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"), AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "last", urlScheme: "spotify://")]
       let entry = SimpleEntry(apps: selectedApps)
         let timeline = Timeline(entries: [entry], policy: .never) // No time-based updates
         completion(timeline)
@@ -34,9 +34,11 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct dumbphonewidgetEntryView: View {
+    @Environment(\.colorScheme) var colorScheme
     var entry: SimpleEntry
 
     var body: some View {
+        
         VStack (alignment: .center, spacing: 10){
    
           
@@ -53,7 +55,7 @@ struct dumbphonewidgetEntryView: View {
             
           }
         }
-        .padding(20)
+        .containerBackground(colorScheme == .dark ? .black : .white, for: .widget)
     }
   
 }
@@ -64,16 +66,15 @@ struct dumbphonewidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             dumbphonewidgetEntryView(entry: entry)
-                .containerBackground(.white.tertiary, for: .widget)
         }
-        .configurationDisplayName("My Widget")
+        .configurationDisplayName("•")
         .description("This is a simple widget.")
-//        .supportedFamilies([.systemLarge])
+        .supportedFamilies([.systemLarge])
     }
 }
 
 #Preview(as: .systemLarge) {
     dumbphonewidget()
 } timeline: {
-    SimpleEntry(apps: [AppInfo(name: "Spotify Music", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://")])
+    SimpleEntry(apps: [AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"), AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "last", urlScheme: "spotify://")])
 }

@@ -20,16 +20,18 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date = Date() // Required by WidgetKit; unused in logic
-//    var apps: [String]
 }
 
 struct blankwidgetEntryView: View {
     var entry: SimpleEntry
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        // This view will now display nothing
         Color.clear // Blank widget background
+        .containerBackground(colorScheme == .dark ? Color.black : Color.white, for: .widget)
+      
     }
+  
 }
 
 
@@ -39,11 +41,10 @@ struct blankwidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             blankwidgetEntryView(entry: entry)
-                .containerBackground(.white.tertiary, for: .widget)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is a simple widget.")
-//        .supportedFamilies([.systemLarge])
+        .configurationDisplayName("Blank Widget")
+        .description("Add this widget above the main widget to position your list of apps")
+        .supportedFamilies([.systemMedium])
     }
 }
 

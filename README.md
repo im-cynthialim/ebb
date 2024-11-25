@@ -1,10 +1,3 @@
-//
-//  READ.ME
-//  dumbphone
-//
-//  Created by Cynthia Lim on 2024-11-24.
-//
-
 # PAUZ
 
 A minimalistic iOS app with widgets that help to convert your phone to a dumbphone.

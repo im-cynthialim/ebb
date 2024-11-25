@@ -1,5 +1,13 @@
 import SwiftUI
 
+
+struct AppInfo: Identifiable, Hashable {
+  let id = UUID()
+  let name: String
+  let urlScheme: String
+}
+
+
 @main
 
 
@@ -9,11 +17,7 @@ struct dumbphoneApp: App {
   @State private var targetURLScheme: String?
   
   
-  struct AppInfo: Identifiable, Hashable {
-    let id = UUID()
-    let name: String
-    let urlScheme: String
-  }
+
   
   let availableApps: [AppInfo] =
   [
@@ -132,7 +136,7 @@ struct dumbphoneApp: App {
   var body: some Scene {
     
     WindowGroup {
-      DecideView(targetURLScheme: $targetURLScheme)
+      DecideView(targetURLScheme: $targetURLScheme, availableApps: availableApps)
       //            .onOpenURL { url in
       //                            if url.scheme == "dumbphone" && url.host == "openedFromWidget" {
       //                                openedFromWidget = true
@@ -178,13 +182,15 @@ struct dumbphoneApp: App {
 struct DecideView: View {
     @AppStorage("openedFromWidget") private var openedFromWidget = false
     @Binding var targetURLScheme: String?
+  let availableApps: [AppInfo]
+  
 
     var body: some View {
         VStack {
             if openedFromWidget {
               BlankView(targetURLScheme: $targetURLScheme)
             } else {
-                ContentView()
+              ContentView(availableApps: availableApps)
             }
         }
     }

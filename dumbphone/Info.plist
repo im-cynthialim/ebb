@@ -15,5 +15,11 @@
 			</array>
 		</dict>
 	</array>
+		<key>com.apple.security.application-groups</key>
+<array>
+    <string>group.com.cynthialim.dumbphone</string>
+</array>
+
+
 </dict>
 </plist>

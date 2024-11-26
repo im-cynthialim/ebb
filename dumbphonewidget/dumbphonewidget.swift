@@ -1,26 +1,29 @@
 import WidgetKit
 import SwiftUI
 
-struct AppInfo: Identifiable, Hashable {
-  let id = UUID()
-  let name: String
-  let urlScheme: String
-}
-
-
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(apps: [])
+        SimpleEntry(apps: [ AppInfo(name: "spotify", urlScheme: "spotify://"),
+                            AppInfo(name: "books", urlScheme: "ibooks://"),
+                            AppInfo(name: "mail", urlScheme: "message://"),
+                            AppInfo(name: "whatsapp", urlScheme: "whatsapp://"),
+                            AppInfo(name: "photos", urlScheme: "photos-redirect://"),
+                            AppInfo(name: "discord", urlScheme: "discord://")])
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(apps: [])
+      let apps = SharedStorage.loadSelectedApps()
+        let entry = SimpleEntry(apps: apps)
         completion(entry)
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
-      let selectedApps = [AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"), AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "last", urlScheme: "spotify://")]
-      let entry = SimpleEntry(apps: selectedApps)
+
+      let apps = SharedStorage.loadSelectedApps()
+      
+      // Create a timeline entry
+      let entry = SimpleEntry(apps: apps)
+      
         let timeline = Timeline(entries: [entry], policy: .never) // No time-based updates
         completion(timeline)
     }
@@ -68,14 +71,22 @@ struct dumbphonewidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             dumbphonewidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("•")
-        .description("This is a simple widget.")
-        .supportedFamilies([.systemLarge])
+        .configurationDisplayName("ebb")
+        .description("This is main widget listing all your apps")
+//        .supportedFamilies([.system.systemLarge])
     }
 }
 
 #Preview(as: .systemLarge) {
     dumbphonewidget()
 } timeline: {
-    SimpleEntry(apps: [AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"), AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "spotify", urlScheme: "spotify://"), AppInfo(name: "iBooks", urlScheme: "ibooks://"),AppInfo(name: "last", urlScheme: "spotify://")])
+    SimpleEntry(apps: [])
 }
+
+
+//AppInfo(name: "spotify", urlScheme: "spotify://"),
+//                   AppInfo(name: "books", urlScheme: "ibooks://"),
+//                   AppInfo(name: "mail", urlScheme: "message://"),
+//                   AppInfo(name: "whatsapp", urlScheme: "whatsapp://"),
+//                   AppInfo(name: "photos", urlScheme: "photos-redirect://"),
+//                   AppInfo(name: "discord", urlScheme: "discord://")

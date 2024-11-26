@@ -51,6 +51,8 @@
 /* Begin PBXFileReference section */
 		455FB8102CF21F3E000CAE0E /* blankwidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = blankwidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		455FB8272CF38936000CAE0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		456879EF2CF4B40F00794E64 /* dumbphonewidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dumbphonewidgetExtension.entitlements; sourceTree = "<group>"; };
+		456879F02CF4B41A00794E64 /* blankwidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blankwidgetExtension.entitlements; sourceTree = "<group>"; };
 		45DAD04A2CF023690004EEB9 /* dumbphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dumbphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45DAD0612CF023870004EEB9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		45DAD0632CF023880004EEB9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -75,14 +77,18 @@
 		456879EC2CF3FF1C00794E64 /* Exceptions for "dumbphone" folder in "dumbphonewidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AppData.swift,
 				ColorExtension.swift,
+				SharedStorage.swift,
 			);
 			target = 45DAD08B2CF0248C0004EEB9 /* dumbphonewidgetExtension */;
 		};
 		456879ED2CF3FF1C00794E64 /* Exceptions for "dumbphone" folder in "blankwidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AppData.swift,
 				ColorExtension.swift,
+				SharedStorage.swift,
 			);
 			target = 455FB80F2CF21F3E000CAE0E /* blankwidgetExtension */;
 		};
@@ -156,6 +162,8 @@
 		45DAD0412CF023690004EEB9 = {
 			isa = PBXGroup;
 			children = (
+				456879F02CF4B41A00794E64 /* blankwidgetExtension.entitlements */,
+				456879EF2CF4B40F00794E64 /* dumbphonewidgetExtension.entitlements */,
 				455FB8272CF38936000CAE0E /* README.md */,
 				45DAD04C2CF023690004EEB9 /* dumbphone */,
 				45DAD08F2CF0248C0004EEB9 /* dumbphonewidget */,
@@ -366,6 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = blankwidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UMZNXCQRQT;
@@ -394,6 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = blankwidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UMZNXCQRQT;
@@ -541,6 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = dumbphone/dumbphone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dumbphone/Preview Content\"";
@@ -572,6 +583,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = dumbphone/dumbphone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dumbphone/Preview Content\"";
@@ -603,6 +615,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = dumbphonewidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UMZNXCQRQT;
@@ -634,6 +647,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = dumbphonewidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UMZNXCQRQT;

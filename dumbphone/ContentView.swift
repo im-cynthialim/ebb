@@ -27,6 +27,7 @@ struct ContentView: View {
                 .padding(.leading, 10)
                 .padding(8)
                 .background(RoundedRectangle(cornerRadius: 8).strokeBorder(lightGrey, lineWidth: 0.5))
+              
                 .frame(width: 200)
                 .onSubmit {
                   // Save changes and exit editing mode
@@ -37,7 +38,7 @@ struct ContentView: View {
           } else {
             Text(app.name).bold().font(.custom("Poppins-Bold", size: 16)).padding(.leading, 10)
               .onTapGesture {
-                //                         Set editing mode if row clicked
+                // Set editing mode if row clicked
                 editingAppId = app.id
               }
           }
@@ -45,8 +46,8 @@ struct ContentView: View {
         .onDelete(perform: removeApp) // Delete by sliding left
         .onMove(perform: moveApp) // Make the list draggable for reordering
         .listRowSeparator(.hidden)
+        .listRowBackground(colorScheme == .dark ? Color.darkMode : Color.lightMode)
       }
-      .background(colorScheme == .dark ? Color.darkMode : Color.lightMode)
       .listStyle(PlainListStyle())
       .onAppear {
         selectedApps = SharedStorage.loadSelectedApps() // Load saved apps from persistent storage when the view appears
@@ -56,11 +57,10 @@ struct ContentView: View {
       List(availableApps, id: \.self) { app in
         HStack {
           
-          Text(app.name) // Display the app name
+          Text(app.name)
           
           Spacer()
           
-          // Plus icon to add app to selected apps
           Button(action: {
             addApp(app)
           }) {
@@ -72,13 +72,14 @@ struct ContentView: View {
           .buttonStyle(PlainButtonStyle()) // To avoid extra button styling
         }
         .padding()
+        .listRowBackground(colorScheme == .dark ? Color.darkMode : Color.lightMode)
       }
-      
+      .listStyle(PlainListStyle())
       .onAppear {
         selectedApps = SharedStorage.loadSelectedApps() // Load saved apps from persistent storage when the view appears
       }
       
-    }
+    }.background(colorScheme == .dark ? Color.darkMode : Color.lightMode)
   }
   
   func moveApp(from source: IndexSet, to destination: Int) {

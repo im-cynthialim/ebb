@@ -77,8 +77,6 @@ struct dumbphoneApp: App {
 struct DecideView: View {
     @AppStorage("openedFromWidget") private var openedFromWidget = false
     @Binding var targetURLScheme: String?
-//    @State private var selectedApps: Set<AppInfo> = []
-  
 
     var body: some View {
         VStack {
@@ -86,6 +84,7 @@ struct DecideView: View {
               BlankView(targetURLScheme: $targetURLScheme)
             } else {
               ContentView()
+               
             }
         }
     }

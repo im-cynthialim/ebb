@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Poppins-Bold.ttf</string>
+	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -15,11 +19,9 @@
 			</array>
 		</dict>
 	</array>
-		<key>com.apple.security.application-groups</key>
-<array>
-    <string>group.com.cynthialim.dumbphone</string>
-</array>
-
-
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.com.cynthialim.dumbphone</string>
+	</array>
 </dict>
 </plist>

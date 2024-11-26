@@ -12,65 +12,76 @@ struct ContentView: View {
     @State private var isChecked: Bool = false
     @State private var selectedApps: [AppInfo] = []
 
-    var body: some View {
-      Text("Selected Apps").padding(.top, 20).bold()
-//     convert Set to Array to properly list with List
+  var body: some View {
+    
+        
+        Text("Selected Apps").padding(.top, 20).bold()
+        //     convert Set to Array to properly list with List
+        
       
-      
-        List(Array(selectedApps)) { app in
-          HStack {
-            Text(app.name)
-            // Plus icon to add app to selected apps
-            Button(action: {
-              removeApp(app)
-            }) {
-              Image(systemName: "minus.circle.fill")
-                .foregroundColor(.blue)
-            }
-            .buttonStyle(PlainButtonStyle())
+        List {
+          ForEach (selectedApps, id: \.self) { app in
+            Text(app.name).bold().padding(.leading, 20)
+              .font(.custom("Poppins-Bold", size: 16))
+    
+            .listRowSeparator(.hidden)
+         
+          }
+          .onDelete(perform: removeApp)
+          .onMove(perform: moveApp)
         }
+      
+        .background(Color.white)
+        .listStyle(PlainListStyle())
+        .onAppear {
+          selectedApps = SharedStorage.loadSelectedApps() // Load saved apps from persistent storage when the view appears
+        }
+        
+        // Make the list draggable for reordering
+        //      NavigationView {
+        //                List(availableApps, id: \.self) { app in
+        //                    HStack {
+        //                      Text(app.name) // Display the app name
+        //
+        //                        Spacer()
+        //
+        //                        // Plus icon to add app to selected apps
+        //                        Button(action: {
+        //                          addApp(app)
+        //                        }) {
+        //                            Image(systemName: "plus.circle.fill")
+        //                                .foregroundColor(.black)
+        //                                .clipShape(Circle())
+        //                                .scaleEffect(1.5)
+        //                        }
+        //                        .buttonStyle(PlainButtonStyle()) // To avoid extra button styling
+        //                    }
+        //                    .padding()
+        //                }
+        //                .navigationTitle("Available Apps")
+        //            }
+        //      .onAppear {
+        //                selectedApps = SharedStorage.loadSelectedApps() // Load saved apps from persistent storage when the view appears
+        //              }
+        
       }
-    .onAppear {
-        selectedApps = SharedStorage.loadSelectedApps() // Load saved apps from persistent storage when the view appears
-      }
-      NavigationView {
-                List(availableApps, id: \.self) { app in
-                    HStack {
-                      Text(app.name) // Display the app name
-                        
-                        Spacer()
-                        
-                        // Plus icon to add app to selected apps
-                        Button(action: {
-                          addApp(app)
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                                .foregroundColor(.blue)
-                        }
-                        .buttonStyle(PlainButtonStyle()) // To avoid extra button styling
-                    }
-                    .padding()
-                }
-                .navigationTitle("Available Apps")
+    
+  
+  func moveApp(from source: IndexSet, to destination: Int) {
+         selectedApps.move(fromOffsets: source, toOffset: destination)
+         SharedStorage.saveSelectedApps(selectedApps) // Save the new order
+         WidgetCenter.shared.reloadAllTimelines() // Update widget after reordering
+     }
+  
+  func removeApp(at offsets: IndexSet) {
+            for index in offsets {
+                selectedApps.remove(at: index)
             }
-      .onAppear {
-                selectedApps = SharedStorage.loadSelectedApps() // Load saved apps from persistent storage when the view appears
-              }
-     
-    }
-  
-  
-  func removeApp(_ app: AppInfo) {
-    if let index = selectedApps.firstIndex(where: { $0.urlScheme == app.urlScheme }) {
-          // Remove the app at that index
-          selectedApps.remove(at: index)
-          
           // Save the updated selectedApps list
           SharedStorage.saveSelectedApps(selectedApps)
           
           // Trigger widget update if needed
           WidgetCenter.shared.reloadAllTimelines()
-      }
       }
   
   func addApp(_ app: AppInfo) {

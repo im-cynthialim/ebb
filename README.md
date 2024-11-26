@@ -13,7 +13,8 @@ This project has been inspired by Blank Spaces and Dumbify and simply includes m
 ## Features
 
 - widget adjusts to dark mode
-- customization of listed apps
+- personalized list of apps
+- customization of app name in widget display
 
 
 
@@ -22,5 +23,6 @@ This project has been inspired by Blank Spaces and Dumbify and simply includes m
 - Basics of SwiftUI and WidgetKit
 - App Groups
 - Adding Custom fonts
+- Reformat with Ctrl+I (Mac)
 
 

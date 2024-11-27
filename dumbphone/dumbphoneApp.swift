@@ -55,21 +55,14 @@ struct dumbphoneApp: App {
   
   private func openApp(with urlScheme: String) {
     if let url = URL(string: urlScheme) {
-      UIApplication.shared.open(url, options: [:]) { success in
-        if success {
-          print("App opened successfully: \(urlScheme)")
-          // Reset targetURLScheme after opening
-          DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            targetURLScheme = nil
-            openedFromWidget = false
-          }
-        } else {
-          print("Failed to open app with URL scheme: \(urlScheme)")
-        }
+      UIApplication.shared.open(url)
+         
       }
-    } else {
-      print("Invalid URL scheme: \(urlScheme)")
+    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+      targetURLScheme = nil
+      openedFromWidget = false
     }
+  
   }
 }
 

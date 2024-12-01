@@ -42,7 +42,7 @@ struct ContentView: View {
           }) {
               Image(systemName: isClicked ? "checkmark.circle.fill" : "plus.circle.fill")
               .foregroundColor(isClicked ? .green : oppositeColor)
-              .font(.system(size: 25))
+              .font(.system(size: 20))
                 .scaleEffect(isClicked ? 1.0 : 1.0)
                   .animation(.easeInOut(duration: 0.2), value: isClicked) // Smooth animation
           }
@@ -153,7 +153,9 @@ struct ContentView: View {
             TextField("app name", text: $newApp.name)
             TextField("app url", text: $newApp.urlScheme)
           }
-          .padding(.leading, 10)
+          .padding(.horizontal, 20)
+          .padding(.top, 20)
+          
           
           
           
@@ -173,7 +175,9 @@ struct ContentView: View {
             }
             
             Button(action: {
-              selectedApps.append(newApp)
+              if (newApp.name != "" || newApp.urlScheme != "") {
+                selectedApps.append(newApp)
+              }
               newApp = AppInfo(name: "", urlScheme: "") // reset values
               SharedStorage.saveSelectedApps(selectedApps)
               WidgetCenter.shared.reloadAllTimelines() // Update widget after reordering
@@ -189,11 +193,12 @@ struct ContentView: View {
             }
             .cornerRadius(5)
           }
+          .padding(.top, 10)
           
           
         }
-        .frame(width: 300, height: 200)
-        .padding(5)
+        .frame(width: 300)
+        .padding(.bottom, 20)
         .background(colorScheme == .dark ? Color.darkMode : Color.lightMode) // Dimmed background
         .overlay(
           RoundedRectangle(cornerRadius: 10)

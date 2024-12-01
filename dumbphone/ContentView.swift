@@ -14,126 +14,111 @@ struct ContentView: View {
   @State private var editingAppId: UUID? = nil
   @State private var showPopup = false
   @State private var newApp = AppInfo(name: "", urlScheme: "")
+  @State private var addedApp = false
   
-  
+  var coreColor: Color {
+       colorScheme == .dark ? Color.darkMode : Color.lightMode
+   }
+  var oppositeColor: Color {
+    colorScheme == .dark ? Color.lightMode : Color.darkMode
+   }
+
   let lightGrey = Color(red: 0.8274509803921568, green: 0.8274509803921568, blue: 0.8274509803921568)
   
-  var body: some View {
-    VStack {
-      Text("Selected Apps").padding(.top, 20).bold().padding(.bottom, 20)
-      
-      List {
-        ForEach(selectedApps) { app in
-          if editingAppId == app.id {
-            if let index = selectedApps.firstIndex(where: { $0.id == app.id }) {
-              TextField("Edit app name", text: $selectedApps[index].name).bold().font(.custom("Poppins-Bold", size: 20))
-                .padding(.leading, 10)
-                .padding(8)
-                .background(RoundedRectangle(cornerRadius: 8).strokeBorder(lightGrey, lineWidth: 0.5))
-              
-                .frame(width: 200)
-                .onSubmit {
-                  // Save changes and exit editing mode
-                  SharedStorage.saveSelectedApps(selectedApps)
-                  WidgetCenter.shared.reloadAllTimelines()
-                  editingAppId = nil
-                }
-            }
-          } else {
-            Text(app.name).bold().font(.custom("Poppins-Bold", size: 20)).padding(.leading, 10)
-              .onTapGesture {
-                // Set editing mode if row clicked
-                editingAppId = app.id
-              }
+  struct ButtonWithAnimation: View {
+
+      @State private var isClicked = false
+      var coreColor: Color
+      var oppositeColor: Color
+      let action: () -> Void
+    
+      var body: some View {
+          Button(action: {
+              isClicked.toggle() // Toggle the local state
+              action() // Perform the action passed in
+              DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 2 seconds delay
+                           isClicked = false
+                       }
+          }) {
+              Image(systemName: isClicked ? "checkmark.circle.fill" : "plus.circle.fill")
+              .foregroundColor(isClicked ? .green : oppositeColor)
+              .font(.system(size: 25))
+                .scaleEffect(isClicked ? 1.0 : 1.0)
+                  .animation(.easeInOut(duration: 0.2), value: isClicked) // Smooth animation
           }
-        }
-        .onDelete(perform: removeApp) // Delete by sliding left
-        .onMove(perform: moveApp) // Make the list draggable for reordering
-        .listRowSeparator(.hidden)
-        .listRowBackground(colorScheme == .dark ? Color.darkMode : Color.lightMode)
+          .buttonStyle(PlainButtonStyle())
       }
-      .listStyle(PlainListStyle())
-      .onAppear {
-        selectedApps = SharedStorage.loadSelectedApps() // Load saved apps from persistent storage when the view appears
-      }
-      
-      ZStack {
-        Button (action: {
-          withAnimation {
-            showPopup = true
-          }
-        }) {
-          
-          Text ("New App")
-            .bold()
-            .foregroundColor(Color.lightMode)
-            .padding(15)
-            .background(Color.darkMode)
-            .cornerRadius(8)
-        }
-        if showPopup {
-          VStack {
-            VStack{
-              TextField("app name", text: $newApp.name)
-              TextField("app url", text: $newApp.urlScheme)
-            }
-            .padding(.leading, 10)
-            
-            
-            
-            HStack {
-              Button(action: {
-                withAnimation {
-                  showPopup = false // Close the popup
-                }
-              }) {
-                Text("Cancel")
-                  .foregroundColor(Color.darkMode)
-                  .padding(10)
-                  .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                      .stroke(Color.darkMode, lineWidth: 1)
-                  )
-              }
-              
-              Button(action: {
-                selectedApps.append(newApp)
-                newApp = AppInfo(name: "", urlScheme: "") // reset values
-                SharedStorage.saveSelectedApps(selectedApps)
-                WidgetCenter.shared.reloadAllTimelines() // Update widget after reordering
-                withAnimation {
-                  showPopup = false // Close the popup
-                }
-              }) {
-                Text("Add")
-                .padding(10)
-                .foregroundColor(Color.lightMode)
-                
-                .background(Color.darkMode)
-              }
-              .cornerRadius(5)
-            }
-          
+  }
+
   
+  var body: some View {
+    ZStack {
+      
+      VStack {
+        Text("Selected Apps").padding(.top, 20).bold().padding(.bottom, 20)
+        
+        List {
+          ForEach(selectedApps) { app in
+            if editingAppId == app.id {
+              if let index = selectedApps.firstIndex(where: { $0.id == app.id }) {
+                TextField("Edit app name", text: $selectedApps[index].name).bold() .font(.system(size: 15))
+                  .padding(.leading, 10)
+                  .padding(8)
+                  .background(RoundedRectangle(cornerRadius: 8).strokeBorder(lightGrey, lineWidth: 0.5))
+                
+                  .frame(width: 200)
+                  .onSubmit {
+                    // Save changes and exit editing mode
+                    SharedStorage.saveSelectedApps(selectedApps)
+                    WidgetCenter.shared.reloadAllTimelines()
+                    editingAppId = nil
+                  }
+              }
+            } else {
+              Text(app.name).bold().font(.system(size: 15)).padding(.leading, 10)
+                .onTapGesture {
+                  // Set editing mode if row clicked
+                  editingAppId = app.id
+                }
+            }
           }
-            .frame(width: 300, height: 200)
-            .padding(5)
-            .background(Color.lightMode) // Dimmed background
-            .overlay(
-              RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.darkMode, lineWidth: 1) // Border color and width
-            )
-            .transition(.scale) // Smooth animation
-            .animation(.easeInOut, value: showPopup)
-          }
-          
+          .onDelete(perform: removeApp) // Delete by sliding left
+          .onMove(perform: moveApp) // Make the list draggable for reordering
+          .listRowSeparator(.hidden)
+          .listRowBackground(coreColor)
+        }
+        .listStyle(PlainListStyle())
+        .onAppear {
+          selectedApps = SharedStorage.loadSelectedApps() // Load saved apps from persistent storage when the view appears
         }
         
+        Divider()
+          .frame(height: 2) // Adjust the thickness
+          .background(oppositeColor)
+        
+        
+        ZStack {
+          Text("Available Apps").padding(.top, 20).bold().padding(.bottom, 20).padding(.leading, 25).frame(maxWidth: .infinity, alignment: .leading)
+          Button (action: {
+            withAnimation {
+              showPopup = true
+            }
+          }) {
+            
+            Text ("New App")
+              .bold()
+              .foregroundColor(colorScheme == .dark ? Color.darkMode : Color.lightMode)
+              .padding(15)
+              .background(colorScheme == .dark ? Color.lightMode : Color.darkMode)
+              .cornerRadius(8)
+          }
+          .frame(maxWidth: .infinity, alignment: .trailing).padding(.trailing, 25)
+          
+        }
         
         
         
         List{
-          
           ForEach(availableApps){ app in
             HStack {
               
@@ -143,69 +128,114 @@ struct ContentView: View {
               
               Spacer()
               
-              Button(action: {
+              ButtonWithAnimation(coreColor: coreColor, oppositeColor: oppositeColor, action: {
                 addApp(app)
-              }) {
-                Image(systemName: "plus.circle.fill")
-                  .foregroundColor(.black)
-                  .clipShape(Circle())
-                  .scaleEffect(1.5)
-              }
+              })
               .buttonStyle(PlainButtonStyle()) // To avoid extra button styling
             }
             .padding()
-            .listRowBackground(colorScheme == .dark ? Color.darkMode : Color.lightMode)
+            .listRowBackground(coreColor)
           }
-          .listStyle(PlainListStyle())
-        }
-        .onAppear {
-          selectedApps = SharedStorage.loadSelectedApps() // Load saved apps from persistent storage when the view appears
+          .listRowSeparator(.hidden)
+          .listRowBackground(coreColor)
           
         }
-        
+        .listStyle(PlainListStyle())
+        .onAppear {
+          selectedApps = SharedStorage.loadSelectedApps() // Load saved apps from persistent storage when the view appears
+        }
       }
+      .background(coreColor)
       
-      .background(colorScheme == .dark ? Color.darkMode : Color.lightMode)
-    }
-    
-    //  func newApp(
-    
-    func moveApp(from source: IndexSet, to destination: Int) {
-      selectedApps.move(fromOffsets: source, toOffset: destination)
-      SharedStorage.saveSelectedApps(selectedApps) // Save the new order
-      WidgetCenter.shared.reloadAllTimelines() // Update widget after reordering
-    }
-    
-    func removeApp(at offsets: IndexSet) {
-      for index in offsets {
-        selectedApps.remove(at: index)
+      if showPopup {
+        VStack {
+          VStack{
+            TextField("app name", text: $newApp.name)
+            TextField("app url", text: $newApp.urlScheme)
+          }
+          .padding(.leading, 10)
+          
+          
+          
+          HStack {
+            Button(action: {
+              withAnimation {
+                showPopup = false // Close the popup
+              }
+            }) {
+              Text("Cancel")
+                .foregroundColor(colorScheme == .dark ? Color.lightMode : Color.darkMode)
+                .padding(10)
+                .overlay(
+                  RoundedRectangle(cornerRadius: 5)
+                    .stroke(colorScheme == .dark ? Color.lightMode : Color.darkMode, lineWidth: 1)
+                )
+            }
+            
+            Button(action: {
+              selectedApps.append(newApp)
+              newApp = AppInfo(name: "", urlScheme: "") // reset values
+              SharedStorage.saveSelectedApps(selectedApps)
+              WidgetCenter.shared.reloadAllTimelines() // Update widget after reordering
+              withAnimation {
+                showPopup = false // Close the popup
+              }
+            }) {
+              Text("Add")
+                .padding(10)
+                .foregroundColor(coreColor)
+              
+                .background(oppositeColor)
+            }
+            .cornerRadius(5)
+          }
+          
+          
+        }
+        .frame(width: 300, height: 200)
+        .padding(5)
+        .background(colorScheme == .dark ? Color.darkMode : Color.lightMode) // Dimmed background
+        .overlay(
+          RoundedRectangle(cornerRadius: 10)
+            .stroke(colorScheme == .dark ? Color.lightMode : Color.darkMode, lineWidth: 1) // Border color and width
+        )
+        .transition(.scale) // Smooth animation
+        .animation(.easeInOut, value: showPopup)
       }
-      // Save the updated selectedApps list
+    }
+  }
+  
+
+  
+  func moveApp(from source: IndexSet, to destination: Int) {
+    selectedApps.move(fromOffsets: source, toOffset: destination)
+    SharedStorage.saveSelectedApps(selectedApps) // Save the new order
+    WidgetCenter.shared.reloadAllTimelines() // Update widget after reordering
+  }
+  
+  func removeApp(at offsets: IndexSet) {
+    for index in offsets {
+      selectedApps.remove(at: index)
+    }
+    // Save the updated selectedApps list
+    SharedStorage.saveSelectedApps(selectedApps)
+    
+    // Trigger widget update if needed
+    WidgetCenter.shared.reloadAllTimelines()
+  }
+  
+  func addApp(_ app: AppInfo) {
+    if !selectedApps.contains(app) {
+      selectedApps.append(app)
       SharedStorage.saveSelectedApps(selectedApps)
-      
-      // Trigger widget update if needed
       WidgetCenter.shared.reloadAllTimelines()
     }
-    
-    func addApp(_ app: AppInfo) {
-      if !selectedApps.contains(app) {
-        selectedApps.append(app)
-        SharedStorage.saveSelectedApps(selectedApps)
-        WidgetCenter.shared.reloadAllTimelines()
-      }
-    }
   }
-  
-  struct ModalView: View {
-    var body: some View {
-      VStack {
-        Text ("opened modal")
-        
-      }
-    }
-  }
-  
-  
-  #Preview {
-    ContentView()
-  }
+}
+
+
+
+
+#Preview {
+  ContentView()
+}

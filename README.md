@@ -26,3 +26,8 @@ This project has been inspired by Blank Spaces and Dumbify and simply includes m
 - Reformat with Ctrl+I (Mac)
 
 
+## Demo
+
+https://github.com/user-attachments/assets/42fd88e1-523c-44d2-83ca-3a573dda67dc
+
+

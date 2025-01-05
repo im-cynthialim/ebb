@@ -22,7 +22,7 @@ This project has been inspired by Blank Spaces and Dumbify and simply includes m
 
 - Basics of SwiftUI and WidgetKit
 - App Groups
-- Adding Custom fonts
+- Adding custom fonts
 - Reformat with Ctrl+I (Mac)
 
 

@@ -2,6 +2,12 @@
 
 A minimalistic iOS app with widgets that help to convert your phone to a dumbphone.
 
+
+## Demo
+
+https://github.com/user-attachments/assets/42fd88e1-523c-44d2-83ca-3a573dda67dc
+
+
 ## What's a dumbphone?
 
 Think back to basic cellphones where you could only make calls and maybe send some mail - a dumbphone is a simplified mobile phone.
@@ -25,9 +31,5 @@ This project has been inspired by Blank Spaces and Dumbify and simply includes m
 - Adding custom fonts
 - Reformat with Ctrl+I (Mac)
 
-
-## Demo
-
-https://github.com/user-attachments/assets/42fd88e1-523c-44d2-83ca-3a573dda67dc
 
 

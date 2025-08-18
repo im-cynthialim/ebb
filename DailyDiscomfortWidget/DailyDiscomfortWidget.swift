@@ -43,6 +43,7 @@ struct DailyDiscomfortWidgetEntryView : View {
             .bold()
             .font(.custom("Poppins-Bold", size: 15))
             .containerBackground(colorScheme == .dark ? Color.darkMode : Color.lightMode, for: .widget)
+            .multilineTextAlignment(.center)
         }
     }
 }

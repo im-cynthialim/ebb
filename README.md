@@ -30,6 +30,7 @@ This project has been inspired by Blank Spaces and Dumbify and simply includes m
 - App Groups
 - Adding custom fonts
 - Reformat with Ctrl+I (Mac)
+- To share files across app + widgets, update the target membership of that file 
 
 
 

@@ -7,270 +7,115 @@
 
 import Foundation
 
-func getDailyQuestion() -> String {
-    let startDate = Calendar.current.date(from: DateComponents(year: 2025, month: 8, day: 1))!
-    let today = Date()
-    let daysSinceStart = Calendar.current.dateComponents([.day], from: startDate, to: today).day ?? 0
-    let index = daysSinceStart % dailyQuestions.count
-    return dailyQuestions[index]
+// MARK: - Cached Quotes Model
+
+struct CachedQuotes: Codable {
+    var quotes: [String]
+    let fetchedDate: Date
+    var currentIndex: Int
+    var nextCursor: String?
 }
 
-let dailyQuestions: [String] = [
-  "If the next 1000 days looked exactly like yesterday, would you be closer or further from your dreams?",
-  "What’s one fear you avoided yesterday that you could face today?",
-  "Name something trivial that actually made you happy recently.",
-  "When did you last do something uncomfortable on purpose?",
-  "If you could only accomplish one meaningful task today, what would it be?",
-  "What habit are you repeating that doesn’t serve you?",
-  "What did you learn about yourself this week?",
-  "When was the last time you apologized even though it was uncomfortable?",
-  "Which person in your life could you show more appreciation to?",
-  "If your life were a story, what chapter are you in right now?",
-  "What small step could you take today toward your biggest goal?",
-  "When was the last time you truly listened without planning your response?",
-  "Which convenience are you over-relying on that reduces your growth?",
-  "What would you do differently if you weren’t afraid of failing?",
-  "Name one thing you’ve been putting off that would make your future self grateful.",
-  "How could you make today slightly harder in a way that helps you grow?",
-  "What’s one assumption you made yesterday that might be wrong?",
-  "What would you regret not doing today?",
-  "How often do you pause to notice something beautiful around you?",
-  "When was the last time you acted in line with your values instead of your comfort?",
-  "What would Jesus want you to notice about today that you normally ignore?",
-  "How can you show kindness today as an act of faith?",
-  "Which small action today could honor God or your spiritual values?",
-  "When did you last reflect on gratitude for what God has given you?",
-  "How can today’s discomfort teach patience, humility, or trust in God?",
-  "What’s one thing you can simplify today to reduce mental clutter?",
-  "When was the last time you listened more than you spoke?",
-  "What would you do if you had to be honest about your feelings today?",
-  "Which small victory can you celebrate from yesterday?",
-  "Who in your life could use encouragement today?",
-  "How can you turn a recent mistake into a learning opportunity?",
-  "What’s one thing you can let go of to free mental space?",
-  "When was the last time you challenged a limiting belief?",
-  "How can you live today in a way that your future self will admire?",
-  "What is something you’ve been avoiding that you could tackle today?",
-  "What’s a small act of service you can do for someone else today?",
-  "Which distraction is stealing more time than you realize?",
-  "What’s one habit that’s quietly helping you grow?",
-  "What would you do differently if you viewed today as a gift from God?",
-  "Which thought is recurring and unhelpful, and how can you redirect it?",
-  "How could you practice patience more intentionally today?",
-  "What’s something simple that could bring joy today?",
-  "Which person’s perspective could teach you something new today?",
-  "How can you turn discomfort into a moment of growth?",
-  "What would you attempt if you weren’t afraid of being judged?",
-  "When did you last act with generosity rather than expectation?",
-  "Which assumption could you question today to see things differently?",
-  "What’s one way you can be more present in daily moments?",
-  "How could you practice gratitude in a small, concrete way today?",
-  "Which fear is subtly guiding your decisions, and how can you challenge it?",
-  "What’s a simple choice today that could improve your health or focus?",
-  "When was the last time you intentionally slowed down to reflect?",
-  "How can today’s challenges teach humility or patience?",
-  "Who can you forgive today, even if it’s difficult?",
-  "What did you take for granted yesterday that you could appreciate today?",
-  "How can you practice self-compassion today?",
-  "What’s one step toward a long-term goal you could take right now?",
-  "Which distraction can you remove to make space for what matters?",
-  "What’s something beautiful you overlooked yesterday?",
-  "How can you act with integrity even when no one is watching?",
-  "Which assumption about others could you question today?",
-  "What small discomfort today could bring the biggest growth tomorrow?",
-  "When did you last express gratitude to someone directly?",
-  "What’s a simple way to honor your values today?",
-  "Which tiny habit could compound into a meaningful change?",
-  "How can you make today feel intentionally different than yesterday?",
-  "What’s one risk worth taking to grow in character or wisdom?",
-  "Which person could you serve without expecting anything in return?",
-  "What’s something that made you smile yesterday that you can repeat today?",
-  "How can you act in line with faith even when it’s inconvenient?",
-  "What’s one limiting thought you can challenge right now?",
-  "When was the last time you paused to notice the present moment?",
-  "Which small discomfort today could teach resilience or patience?",
-  "What’s one thing you can simplify in your schedule or space?",
-  "How could you encourage someone anonymously today?",
-  "Which recurring worry can you view from a different perspective?",
-  "What is one way to be more honest with yourself today?",
-  "Which fear would you face today if you trusted God’s guidance?",
-  "What’s a small choice that could make your day more meaningful?",
-  "How can you act with kindness even toward someone difficult?",
-  "When did you last reflect on what you’re truly grateful for?",
-  "Which thought pattern can you gently redirect today?",
-  "What is one way to bring joy into someone else’s day?",
-  "How can you create a moment of calm or stillness today?",
-  "Which small step today could improve tomorrow?",
-  "How can you let go of what you cannot control today?",
-  "What’s one thing you can do to honor your personal values today?",
-  "Which assumption could you challenge to learn something new?",
-  "What’s a simple ritual today that could boost clarity or focus?",
-  "When was the last time you intentionally helped someone without recognition?",
-  "How can you act with courage in a small way today?",
-  "Which habit brings more peace and focus into your life?",
-  "What’s a way to practice patience with yourself or others today?",
-  "How could you notice God’s presence in an ordinary moment today?",
-  "Which small discomfort could teach you something about your limits?",
-  "What’s one thing you can do to be more generous today?",
-  "When did you last intentionally reflect on your personal growth?",
-  "How can you practice gratitude even in a small inconvenience?",
-  "Which negative thought can you gently transform into something constructive?",
-  "What’s one small thing you can do today to honor a relationship?",
-  "How could you turn a routine moment into an opportunity for reflection?",
-  "What’s a simple action that could bring clarity or peace today?",
-  "Which fear, if faced today, would leave you feeling freer?",
-  "How can you act with integrity when no one is observing?",
-  "When did you last pause to notice beauty in the mundane?",
-  "What’s one thing you can simplify to reduce stress today?",
-  "Which small discomfort could strengthen your character today?",
-  "What’s a way to practice generosity without expecting anything in return?",
-  "How can you approach today with intentionality rather than habit?",
-  "What’s one thing you can do to be more mindful of others today?",
-  "Which thought or habit no longer serves you and can be released today?",
-  "How can you bring a moment of joy or gratitude into someone else’s day?",
-  "What’s a small step toward a meaningful goal that you can take today?",
-  "When did you last pause to consider what truly matters most?",
-  "How can you act in alignment with your faith or values today?",
-  "Which minor inconvenience can you view as an opportunity to grow?",
-  "What’s one way to practice patience or tolerance today?",
-  "How can you notice God’s work or presence in ordinary life today?",
-  "Which fear, if confronted today, could give you clarity or courage?",
-  "What’s one small choice that could improve your focus or energy today?",
-  "How can you show appreciation for someone who rarely hears it?",
-  "What’s a simple way to practice mindfulness or reflection today?",
-  "Which habit strengthens your character, even if it’s uncomfortable?",
-  "What’s one thing you can release today to create mental space?",
-  "How can you act with honesty or courage in a small way today?",
-  "Which recurring thought can you gently shift toward gratitude or clarity?",
-  "What’s one way to serve someone without expecting recognition?",
-  "When did you last reflect on what you’ve been given rather than what you lack?",
-  "How can you turn a small challenge into a meaningful lesson today?",
-  "Which action today aligns with your personal or spiritual values?",
-  "What’s a small way to practice intentionality rather than autopilot today?",
-  "How can you bring calm or clarity into a busy or chaotic moment?",
-  "Which small step today could improve your relationships or impact?",
-  "What’s one habit that can cultivate focus, discipline, or gratitude?",
-  "When did you last intentionally notice someone else’s efforts or kindness?",
-  "How can you act in line with your beliefs even if it’s inconvenient?",
-  "Which discomfort today could teach resilience, humility, or patience?",
-  "What’s a small gesture today that could strengthen a relationship?",
-  "How can you pause to notice beauty or meaning in routine tasks?",
-  "Which thought can you redirect from worry to constructive action?",
-  "What’s one small change that could improve clarity or energy today?",
-  "How can you practice faith, patience, or gratitude in a minor challenge?",
-  "Which minor inconvenience could become an opportunity for reflection?",
-  "What’s a small act of kindness you can do today without recognition?",
-  "When did you last pause to notice your own growth or progress?",
-  "How can you turn a daily routine into a moment of reflection or gratitude?",
-  "Which fear today, if faced, could leave you feeling freer or stronger?",
-  "What’s one small habit that contributes to long-term well-being or clarity?",
-  "How can you act with integrity, even in a small or private choice?",
-  "Which recurring thought can you gently transform into growth or insight?",
-  "What’s a small step today that could improve your focus, relationships, or impact?",
-  "How can you notice God’s presence in ordinary, everyday moments?",
-  "Which small discomfort could teach you something about patience or humility today?",
-  "What’s one thing you can release today to create more space for what matters?",
-  "How can you act intentionally rather than reactively in a minor challenge?",
-  "Which action today could serve someone else without expectation?",
-  "When did you last pause to notice beauty, kindness, or meaning in the ordinary?",
-  "What’s a small way to practice mindfulness, focus, or reflection today?",
-  "Which minor challenge today could be turned into a learning opportunity?",
-  "How can you bring clarity, calm, or gratitude into a chaotic moment?",
-  "What’s one small choice that could make today meaningful in retrospect?",
-  "How can you act in alignment with your spiritual or personal values today?",
-  "Which fear, if faced today, could leave you feeling more confident or free?",
-  "What’s a simple habit that could create long-term clarity or gratitude?",
-  "How can you show appreciation, patience, or generosity in a small way today?",
-  "Which thought or assumption can you gently challenge for insight or growth?",
-  "What’s a small action that could improve your relationships, focus, or energy today?",
-  "How can you notice God’s guidance or presence in ordinary life today?",
-  "Which minor discomfort today could help you grow in resilience, patience, or humility?",
-  "What’s one thing you can simplify today to reduce mental or emotional clutter?",
-  "How can you act with honesty, integrity, or courage in a small way today?",
-  "Which recurring worry or thought can you shift toward gratitude or clarity?",
-  "What’s a small step today that could create a meaningful impact or connection?",
-  "When did you last intentionally reflect on your blessings or growth?",
-  "How can a minor challenge today teach patience, humility, or insight?",
-  "Which small action could strengthen a relationship without recognition?",
-  "What’s one habit today that cultivates focus, discipline, or gratitude?",
-  "How can you turn a routine moment into reflection, insight, or gratitude?",
-  "Which fear today, if confronted, could leave you feeling freer or stronger?",
-  "What’s a small choice that could improve your mental clarity or focus?",
-  "How can you act in line with faith, values, or integrity in a small, practical way today?",
-  "Which minor discomfort could become an opportunity for learning or growth?",
-  "What’s one small gesture of kindness, patience, or appreciation you can do today?",
-  "When did you last pause to notice beauty, insight, or meaning in your day?",
-  "How can you transform a repetitive task into an opportunity for reflection or gratitude?",
-  "Which fear or limiting thought could you challenge to gain insight or freedom today?",
-  "What’s a small step that could create clarity, focus, or long-term impact today?",
-  "How can you intentionally act with generosity, gratitude, or patience in a minor challenge?",
-  "Which minor inconvenience or discomfort could become a meaningful lesson today?",
-  "What’s a simple, unnoticed act of service you can perform today?",
-  "How can you notice progress, growth, or blessing in ordinary moments today?",
-  "Which small habit today contributes to long-term clarity, focus, or gratitude?",
-  "What’s one minor action that could make today meaningful in retrospect?",
-  "How can you pause and notice God’s presence or guidance in ordinary life today?",
-  "Which minor challenge could teach humility, patience, or resilience today?",
-  "What’s a small thing you can release to create mental or emotional space today?",
-  "How can you act intentionally rather than habitually in minor decisions today?",
-  "Which small step today could create a lasting positive impact on yourself or others?",
-  "When did you last pause to reflect on your blessings, growth, or relationships?",
-  "How can a minor difficulty today teach insight, patience, or gratitude?",
-  "Which small action could strengthen a relationship or connection today?",
-  "What’s one habit today that cultivates focus, reflection, or spiritual awareness?",
-  "How can you turn a mundane task into a moment of mindfulness or gratitude?",
-  "Which fear today, if faced, could leave you feeling freer, stronger, or clearer?",
-  "What’s a small choice that improves your clarity, energy, or focus today?",
-  "How can you act in alignment with your values or faith in small, practical ways?",
-  "Which minor discomfort or challenge today could become a lesson in patience or growth?",
-  "What’s one small gesture of kindness, generosity, or reflection you can do today?",
-  "When did you last pause to notice beauty, insight, or meaning around you?",
-  "How can you transform a repetitive or mundane moment into reflection or gratitude?",
-  "Which limiting thought or fear could you challenge to gain clarity or freedom today?",
-  "What’s one small step today that could improve your focus, relationships, or long-term impact?",
-  "How can you act intentionally with patience, gratitude, or generosity in small ways today?",
-  "Which minor inconvenience or discomfort could teach resilience, humility, or insight today?",
-  "What’s a simple, unnoticed act of service you can perform today?",
-  "How can you notice growth, blessings, or insights in ordinary moments today?",
-  "Which small habit today contributes to long-term reflection, focus, or gratitude?",
-  "What’s one minor action that could make today meaningful or memorable?",
-  "How can you pause to notice God’s guidance, presence, or blessings in ordinary life today?",
-  "Which minor challenge could teach patience, humility, or clarity today?",
-  "What’s a small thing you can release today to create mental, emotional, or spiritual space?",
-  "How can you act intentionally rather than habitually in small decisions today?",
-  "Which small step today could leave a lasting positive impact on yourself or others?",
-  "When did you last reflect intentionally on your blessings, growth, or values?",
-  "How can a minor difficulty today teach insight, patience, or spiritual awareness?",
-  "Which small action could strengthen a relationship or connection today?",
-  "What’s one habit today that cultivates reflection, mindfulness, or spiritual focus?",
-  "How can you turn a mundane task into an opportunity for mindfulness, reflection, or gratitude?",
-  "Which fear today, if faced, could leave you feeling freer, stronger, or clearer?",
-  "What’s a small choice today that improves clarity, focus, or energy?",
-  "How can you act in alignment with your values or faith in practical, small ways today?",
-  "Which minor discomfort or challenge today could teach patience, growth, or humility?",
-  "What’s one small gesture of kindness, generosity, or reflection you can do today?",
-  "When did you last pause to notice beauty, insight, or meaning around you?",
-  "How can you transform repetitive or mundane moments into reflection or gratitude?",
-  "Which limiting thought or fear could you challenge to gain clarity or freedom today?",
-  "What’s one small step today that could improve focus, relationships, or long-term impact?",
-  "How can you act intentionally with patience, gratitude, or generosity in small ways today?",
-  "Which minor inconvenience or discomfort could teach resilience, humility, or insight today?",
-  "What’s a simple, unnoticed act of service you can perform today?",
-  "How can you notice growth, blessings, or insights in ordinary moments today?",
-  "Which small habit today contributes to long-term reflection, focus, or gratitude?",
-  "What’s one minor action that could make today meaningful or memorable?",
-  "How can you pause to notice God’s guidance, presence, or blessings in ordinary life today?",
-  "Which minor challenge could teach patience, humility, or clarity today?",
-  "What’s a small thing you can release today to create mental, emotional, or spiritual space?",
-  "How can you act intentionally rather than habitually in small decisions today?",
-  "Which small step today could leave a lasting positive impact on yourself or others?",
-  "When did you last reflect intentionally on your blessings, growth, or values?",
-  "How can a minor difficulty today teach insight, patience, or spiritual awareness?",
-  "Which small action could strengthen a relationship or connection today?",
-  "What’s one habit today that cultivates reflection, mindfulness, or spiritual focus?",
-  "How can you turn a mundane task into an opportunity for mindfulness, reflection, or gratitude?",
-  "Which fear today, if faced, could leave you feeling freer, stronger, or clearer?",
-  "What’s a small choice today that improves clarity, focus, or energy?",
-  "How can you act in alignment with your values or faith in practical, small ways today?",
-  "Which minor discomfort or challenge today could teach patience, growth, or humility?",
-]
+// MARK: - Twitter API Response Models
+
+struct TimelineResponse: Codable {
+    let timeline: [Tweet]
+    let next_cursor: String?
+}
+
+struct Tweet: Codable {
+    let text: String
+}
+
+// MARK: - Quote Service
+
+struct HormoziQuoteService {
+    private static let defaults = UserDefaults(suiteName: "group.com.cynthialim.dumbphone")
+    private static let cacheKey = "cachedHormoziQuotes"
+    private static let fallbackQuote = "Do the boring work that no one else is willing to do, and you'll never have to worry about money again."
+
+    static func getDailyQuote() async -> String {
+        // Load cached quotes
+        if var cached = loadCache() {
+            let daysSinceFetch = Calendar.current.dateComponents(
+                [.day], from: cached.fetchedDate, to: Date()
+            ).day ?? 0
+            let index = cached.currentIndex + daysSinceFetch
+
+            if index < cached.quotes.count {
+                // Still have quotes left — update index and return
+                cached.currentIndex = index
+                saveCache(cached)
+                return cached.quotes[index]
+            }
+        }
+
+        // Cache exhausted or empty — fetch more tweets
+        let cursor = loadCache()?.nextCursor
+        if let result = await fetchTimeline(cursor: cursor) {
+            let cached = CachedQuotes(
+                quotes: result.quotes,
+                fetchedDate: Date(),
+                currentIndex: 0,
+                nextCursor: result.nextCursor
+            )
+            saveCache(cached)
+            return result.quotes.first ?? fallbackQuote
+        }
+
+        // API failed — try returning any remaining cached quote, else fallback
+        if let cached = loadCache(), !cached.quotes.isEmpty {
+            let index = min(cached.currentIndex, cached.quotes.count - 1)
+            return cached.quotes[index]
+        }
+
+        return fallbackQuote
+    }
+
+    // MARK: - API Fetch
+
+    private static func fetchTimeline(cursor: String? = nil) async -> (quotes: [String], nextCursor: String?)? {
+        var urlString = "https://twitter-api45.p.rapidapi.com/timeline.php?screenname=\(APIConfig.screenName)"
+        if let cursor = cursor {
+            urlString += "&cursor=\(cursor)"
+        }
+
+        guard let url = URL(string: urlString) else { return nil }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue(APIConfig.rapidAPIKey, forHTTPHeaderField: "x-rapidapi-key")
+        request.setValue(APIConfig.rapidAPIHost, forHTTPHeaderField: "x-rapidapi-host")
+        request.timeoutInterval = 15
+
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let response = try JSONDecoder().decode(TimelineResponse.self, from: data)
+
+            let quotes = response.timeline
+                .map { $0.text }
+                .filter { text in
+                    // Filter out retweets and very short tweets
+                    !text.hasPrefix("RT @") && text.count > 30
+                }
+
+            return quotes.isEmpty ? nil : (quotes, response.next_cursor)
+        } catch {
+            print("HormoziQuoteService fetch error: \(error)")
+            return nil
+        }
+    }
+
+    // MARK: - Cache
+
+    private static func loadCache() -> CachedQuotes? {
+        guard let data = defaults?.data(forKey: cacheKey) else { return nil }
+        return try? JSONDecoder().decode(CachedQuotes.self, from: data)
+    }
+
+    private static func saveCache(_ cache: CachedQuotes) {
+        if let data = try? JSONEncoder().encode(cache) {
+            defaults?.set(data, forKey: cacheKey)
+        }
+    }
+}

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		452DC3982E51096900D3B685 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0612CF023870004EEB9 /* WidgetKit.framework */; };
+		452DC3992E51096900D3B685 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0632CF023880004EEB9 /* SwiftUI.framework */; };
+		452DC3A62E51096C00D3B685 /* DailyDiscomfortWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 452DC3972E51096900D3B685 /* DailyDiscomfortWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		455FB8112CF21F3E000CAE0E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0612CF023870004EEB9 /* WidgetKit.framework */; };
 		455FB8122CF21F3E000CAE0E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45DAD0632CF023880004EEB9 /* SwiftUI.framework */; };
 		455FB81D2CF21F41000CAE0E /* blankwidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 455FB8102CF21F3E000CAE0E /* blankwidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -17,6 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		452DC3A42E51096C00D3B685 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45DAD0422CF023690004EEB9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 452DC3962E51096900D3B685;
+			remoteInfo = DailyDiscomfortWidgetExtension;
+		};
 		455FB81B2CF21F41000CAE0E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 45DAD0422CF023690004EEB9 /* Project object */;
@@ -40,6 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				452DC3A62E51096C00D3B685 /* DailyDiscomfortWidgetExtension.appex in Embed Foundation Extensions */,
 				45DAD09B2CF0248E0004EEB9 /* dumbphonewidgetExtension.appex in Embed Foundation Extensions */,
 				455FB81D2CF21F41000CAE0E /* blankwidgetExtension.appex in Embed Foundation Extensions */,
 			);
@@ -49,6 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		452DC3972E51096900D3B685 /* DailyDiscomfortWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyDiscomfortWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		452DC3B22E52050E00D3B685 /* DailyDiscomfortWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyDiscomfortWidgetExtension.entitlements; sourceTree = "<group>"; };
 		455FB8102CF21F3E000CAE0E /* blankwidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = blankwidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		455FB8272CF38936000CAE0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		456879EF2CF4B40F00794E64 /* dumbphonewidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dumbphonewidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -60,6 +73,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		452DC3AA2E51096C00D3B685 /* Exceptions for "DailyDiscomfortWidget" folder in "DailyDiscomfortWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 452DC3962E51096900D3B685 /* DailyDiscomfortWidgetExtension */;
+		};
+		452DC3B42E52064900D3B685 /* Exceptions for "dumbphone" folder in "DailyDiscomfortWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ColorExtension.swift,
+				"Poppins-Bold.ttf",
+			);
+			target = 452DC3962E51096900D3B685 /* DailyDiscomfortWidgetExtension */;
+		};
 		455FB81E2CF21F41000CAE0E /* Exceptions for "blankwidget" folder in "blankwidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -79,6 +107,7 @@
 			membershipExceptions = (
 				AppData.swift,
 				ColorExtension.swift,
+				"Poppins-Bold.ttf",
 				SharedStorage.swift,
 			);
 			target = 45DAD08B2CF0248C0004EEB9 /* dumbphonewidgetExtension */;
@@ -88,6 +117,7 @@
 			membershipExceptions = (
 				AppData.swift,
 				ColorExtension.swift,
+				"Poppins-Bold.ttf",
 				SharedStorage.swift,
 			);
 			target = 455FB80F2CF21F3E000CAE0E /* blankwidgetExtension */;
@@ -102,6 +132,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		452DC39A2E51096900D3B685 /* DailyDiscomfortWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				452DC3AA2E51096C00D3B685 /* Exceptions for "DailyDiscomfortWidget" folder in "DailyDiscomfortWidgetExtension" target */,
+			);
+			path = DailyDiscomfortWidget;
+			sourceTree = "<group>";
+		};
 		455FB8132CF21F3E000CAE0E /* blankwidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -116,6 +154,7 @@
 				455FB8262CF25CFF000CAE0E /* Exceptions for "dumbphone" folder in "dumbphone" target */,
 				456879EC2CF3FF1C00794E64 /* Exceptions for "dumbphone" folder in "dumbphonewidgetExtension" target */,
 				456879ED2CF3FF1C00794E64 /* Exceptions for "dumbphone" folder in "blankwidgetExtension" target */,
+				452DC3B42E52064900D3B685 /* Exceptions for "dumbphone" folder in "DailyDiscomfortWidgetExtension" target */,
 			);
 			path = dumbphone;
 			sourceTree = "<group>";
@@ -131,6 +170,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		452DC3942E51096900D3B685 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				452DC3992E51096900D3B685 /* SwiftUI.framework in Frameworks */,
+				452DC3982E51096900D3B685 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		455FB80D2CF21F3E000CAE0E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,12 +210,14 @@
 		45DAD0412CF023690004EEB9 = {
 			isa = PBXGroup;
 			children = (
+				452DC3B22E52050E00D3B685 /* DailyDiscomfortWidgetExtension.entitlements */,
 				456879F02CF4B41A00794E64 /* blankwidgetExtension.entitlements */,
 				456879EF2CF4B40F00794E64 /* dumbphonewidgetExtension.entitlements */,
 				455FB8272CF38936000CAE0E /* README.md */,
 				45DAD04C2CF023690004EEB9 /* dumbphone */,
 				45DAD08F2CF0248C0004EEB9 /* dumbphonewidget */,
 				455FB8132CF21F3E000CAE0E /* blankwidget */,
+				452DC39A2E51096900D3B685 /* DailyDiscomfortWidget */,
 				45DAD0602CF023870004EEB9 /* Frameworks */,
 				45DAD04B2CF023690004EEB9 /* Products */,
 			);
@@ -179,6 +229,7 @@
 				45DAD04A2CF023690004EEB9 /* dumbphone.app */,
 				45DAD08C2CF0248C0004EEB9 /* dumbphonewidgetExtension.appex */,
 				455FB8102CF21F3E000CAE0E /* blankwidgetExtension.appex */,
+				452DC3972E51096900D3B685 /* DailyDiscomfortWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,6 +246,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		452DC3962E51096900D3B685 /* DailyDiscomfortWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 452DC3A72E51096C00D3B685 /* Build configuration list for PBXNativeTarget "DailyDiscomfortWidgetExtension" */;
+			buildPhases = (
+				452DC3932E51096900D3B685 /* Sources */,
+				452DC3942E51096900D3B685 /* Frameworks */,
+				452DC3952E51096900D3B685 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				452DC39A2E51096900D3B685 /* DailyDiscomfortWidget */,
+			);
+			name = DailyDiscomfortWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = DailyDiscomfortWidgetExtension;
+			productReference = 452DC3972E51096900D3B685 /* DailyDiscomfortWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		455FB80F2CF21F3E000CAE0E /* blankwidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 455FB81F2CF21F41000CAE0E /* Build configuration list for PBXNativeTarget "blankwidgetExtension" */;
@@ -231,6 +304,7 @@
 			dependencies = (
 				45DAD09A2CF0248E0004EEB9 /* PBXTargetDependency */,
 				455FB81C2CF21F41000CAE0E /* PBXTargetDependency */,
+				452DC3A52E51096C00D3B685 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				45DAD04C2CF023690004EEB9 /* dumbphone */,
@@ -271,9 +345,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
+					452DC3962E51096900D3B685 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					455FB80F2CF21F3E000CAE0E = {
 						CreatedOnToolsVersion = 16.1;
 					};
@@ -302,11 +379,19 @@
 				45DAD0492CF023690004EEB9 /* dumbphone */,
 				45DAD08B2CF0248C0004EEB9 /* dumbphonewidgetExtension */,
 				455FB80F2CF21F3E000CAE0E /* blankwidgetExtension */,
+				452DC3962E51096900D3B685 /* DailyDiscomfortWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		452DC3952E51096900D3B685 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		455FB80E2CF21F3E000CAE0E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -332,6 +417,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		452DC3932E51096900D3B685 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		455FB80C2CF21F3E000CAE0E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,6 +448,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		452DC3A52E51096C00D3B685 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 452DC3962E51096900D3B685 /* DailyDiscomfortWidgetExtension */;
+			targetProxy = 452DC3A42E51096C00D3B685 /* PBXContainerItemProxy */;
+		};
 		455FB81C2CF21F41000CAE0E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 455FB80F2CF21F3E000CAE0E /* blankwidgetExtension */;
@@ -369,6 +466,64 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		452DC3A82E51096C00D3B685 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DailyDiscomfortWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UMZNXCQRQT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyDiscomfortWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DailyDiscomfortWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialimtt.dumbphone.app.DailyDiscomfortWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		452DC3A92E51096C00D3B685 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DailyDiscomfortWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UMZNXCQRQT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyDiscomfortWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DailyDiscomfortWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialimtt.dumbphone.app.DailyDiscomfortWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		455FB8202CF21F41000CAE0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -389,7 +544,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app.blankwidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialimtt.dumbphone.app.blankwidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -418,7 +573,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app.blankwidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialimtt.dumbphone.app.blankwidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -552,6 +707,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = dumbphone/dumbphone.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dumbphone/Preview Content\"";
@@ -570,8 +726,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialimtt.dumbphone.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -584,6 +741,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = dumbphone/dumbphone.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dumbphone/Preview Content\"";
@@ -602,8 +760,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialimtt.dumbphone.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -629,7 +788,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app.dumbphonewidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialimtt.dumbphone.app.dumbphonewidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -661,7 +820,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialim.dumbphone.app.dumbphonewidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cynthialimtt.dumbphone.app.dumbphonewidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -677,6 +836,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		452DC3A72E51096C00D3B685 /* Build configuration list for PBXNativeTarget "DailyDiscomfortWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				452DC3A82E51096C00D3B685 /* Debug */,
+				452DC3A92E51096C00D3B685 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		455FB81F2CF21F41000CAE0E /* Build configuration list for PBXNativeTarget "blankwidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -11,37 +11,45 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry()
+        SimpleEntry(quote: "Loading...")
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry()
-        completion(entry)
-    }
-    
-    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
-        let timeline = Timeline(entries: [SimpleEntry()], policy: .never) // No time-based updates
-        completion(timeline)
+        Task {
+            let quote = await HormoziQuoteService.getDailyQuote()
+            completion(SimpleEntry(quote: quote))
+        }
     }
 
-//    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
+        Task {
+            let quote = await HormoziQuoteService.getDailyQuote()
+            let entry = SimpleEntry(quote: quote)
+
+            // Refresh at midnight tomorrow
+            let nextMidnight = Calendar.current.startOfDay(
+                for: Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+            )
+            let timeline = Timeline(entries: [entry], policy: .after(nextMidnight))
+            completion(timeline)
+        }
+    }
 }
 
 struct SimpleEntry: TimelineEntry {
-  let date = Date() // Required by WidgetKit; unused in logic
+    let date = Date()
+    let quote: String
 }
 
 struct DailyDiscomfortWidgetEntryView : View {
     var entry: Provider.Entry
     @Environment(\.colorScheme) var colorScheme
-  
+
     var body: some View {
         VStack {
-          Text(getDailyQuestion())
+          Text(entry.quote)
             .bold()
-            .font(.custom("Poppins-Bold", size: 15))
+            .font(.custom("Poppins-Bold", size: 10))
             .containerBackground(colorScheme == .dark ? Color.darkMode : Color.lightMode, for: .widget)
             .multilineTextAlignment(.center)
         }
@@ -65,7 +73,5 @@ struct DailyDiscomfortWidget: Widget {
     DailyDiscomfortWidget()
 }
 timeline: {
-  SimpleEntry()
-//    SimpleEntry(date: .now, configuration: .smiley)
-//    SimpleEntry(date: .now, configuration: .starEyes)
+    SimpleEntry(quote: "Do the boring work that no one else is willing to do.")
 }

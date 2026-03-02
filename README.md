@@ -21,6 +21,7 @@ This project has been inspired by Blank Spaces and Dumbify and simply includes m
 - widget adjusts to dark mode
 - personalized list of apps (either by selecting from provided list or by adding your own)
 - customization of app name in widget display
+- March 2026: Scrapes Alex Hormozi's most recent tweets, showing one a day
 
 
 

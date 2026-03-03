@@ -7,34 +7,63 @@
 
 import Foundation
 
-// MARK: - Cached Quotes Model
+// MARK: - Shared Types (mirrors main app's SharedStorage)
+
+private struct Screenname: Codable {
+    var id: UUID
+    var handle: String
+}
+
+private func loadScreennames() -> [Screenname] {
+    let defaults = UserDefaults(suiteName: "group.com.cynthialim.dumbphone")
+    if let data = defaults?.data(forKey: "quoteScreennames"),
+       let screennames = try? JSONDecoder().decode([Screenname].self, from: data) {
+        return screennames
+    }
+    return [Screenname(id: UUID(), handle: "AlexHormozi")]
+}
+
+// MARK: - Twitter API Response Models
+
+struct TimelineResponse: Decodable {
+    let timeline: [Tweet]
+    let next_cursor: String?
+    let user: TimelineUser?
+}
+
+struct TimelineUser: Decodable {
+    let name: String
+}
+
+struct Tweet: Decodable {
+    let text: String
+}
+
+// MARK: - Cache Models
+
+struct CachedTweet: Codable {
+    let text: String
+    let author: String
+}
 
 struct CachedQuotes: Codable {
-    var quotes: [String]
+    var quotes: [CachedTweet]
     let fetchedDate: Date
     var currentIndex: Int
     var nextCursor: String?
 }
 
-// MARK: - Twitter API Response Models
-
-struct TimelineResponse: Codable {
-    let timeline: [Tweet]
-    let next_cursor: String?
-}
-
-struct Tweet: Codable {
-    let text: String
-}
-
 // MARK: - Quote Service
 
-struct HormoziQuoteService {
+struct QuoteService {
     private static let defaults = UserDefaults(suiteName: "group.com.cynthialim.dumbphone")
     private static let cacheKey = "cachedHormoziQuotes"
-    private static let fallbackQuote = "Do the boring work that no one else is willing to do, and you'll never have to worry about money again."
+    private static let fallback = CachedTweet(
+        text: "Do the boring work that no one else is willing to do, and you'll never have to worry about money again.",
+        author: "Alex Hormozi"
+    )
 
-    static func getDailyQuote() async -> String {
+    static func getDailyQuote() async -> CachedTweet {
         // Load cached quotes
         if var cached = loadCache() {
             let daysSinceFetch = Calendar.current.dateComponents(
@@ -43,44 +72,54 @@ struct HormoziQuoteService {
             let index = cached.currentIndex + daysSinceFetch
 
             if index < cached.quotes.count {
-                // Still have quotes left — update index and return
                 cached.currentIndex = index
                 saveCache(cached)
                 return cached.quotes[index]
             }
         }
 
-        // Cache exhausted or empty — fetch more tweets
-        let cursor = loadCache()?.nextCursor
-        if let result = await fetchTimeline(cursor: cursor) {
+        // Cache exhausted or empty — fetch from all accounts and shuffle
+        let handles = loadScreennames().map { $0.handle }
+        if let quotes = await fetchAllTimelines(handles: handles) {
             let cached = CachedQuotes(
-                quotes: result.quotes,
+                quotes: quotes,
                 fetchedDate: Date(),
                 currentIndex: 0,
-                nextCursor: result.nextCursor
+                nextCursor: nil
             )
             saveCache(cached)
-            return result.quotes.first ?? fallbackQuote
+            return quotes.first ?? fallback
         }
 
-        // API failed — try returning any remaining cached quote, else fallback
+        // API failed — return last cached quote, else fallback
         if let cached = loadCache(), !cached.quotes.isEmpty {
-            let index = min(cached.currentIndex, cached.quotes.count - 1)
-            return cached.quotes[index]
+            return cached.quotes[min(cached.currentIndex, cached.quotes.count - 1)]
         }
 
-        return fallbackQuote
+        return fallback
     }
 
     // MARK: - API Fetch
 
-    private static func fetchTimeline(cursor: String? = nil) async -> (quotes: [String], nextCursor: String?)? {
-        var urlString = "https://twitter-api45.p.rapidapi.com/timeline.php?screenname=\(APIConfig.screenName)"
-        if let cursor = cursor {
-            urlString += "&cursor=\(cursor)"
+    private static func fetchAllTimelines(handles: [String]) async -> [CachedTweet]? {
+        var allQuotes: [CachedTweet] = []
+
+        await withTaskGroup(of: [CachedTweet].self) { group in
+            for handle in handles {
+                group.addTask { await fetchTimeline(screenname: handle) }
+            }
+            for await quotes in group {
+                allQuotes.append(contentsOf: quotes)
+            }
         }
 
-        guard let url = URL(string: urlString) else { return nil }
+        guard !allQuotes.isEmpty else { return nil }
+        return allQuotes.shuffled()
+    }
+
+    private static func fetchTimeline(screenname: String) async -> [CachedTweet] {
+        let urlString = "https://twitter-api45.p.rapidapi.com/timeline.php?screenname=\(screenname)"
+        guard let url = URL(string: urlString) else { return [] }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -91,18 +130,15 @@ struct HormoziQuoteService {
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             let response = try JSONDecoder().decode(TimelineResponse.self, from: data)
+            let authorName = response.user?.name ?? screenname
 
-            let quotes = response.timeline
+            return response.timeline
                 .map { $0.text }
-                .filter { text in
-                    // Filter out retweets and very short tweets
-                    !text.hasPrefix("RT @") && text.count > 30
-                }
-
-            return quotes.isEmpty ? nil : (quotes, response.next_cursor)
+                .filter { !$0.hasPrefix("RT @") && $0.count > 30 }
+                .map { CachedTweet(text: $0, author: authorName) }
         } catch {
-            print("HormoziQuoteService fetch error: \(error)")
-            return nil
+            print("QuoteService fetch error (\(screenname)): \(error)")
+            return []
         }
     }
 
